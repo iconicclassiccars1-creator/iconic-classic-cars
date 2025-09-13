@@ -7,7 +7,13 @@
         <input className="border rounded-md p-2" type="text" name="naam" placeholder="Naam*" required />
         <input className="border rounded-md p-2" type="email" name="email" placeholder="E-mail*" required />
         <input className="border rounded-md p-2" type="text" name="model" placeholder="Model (bijv. Amazon 1967)" />
-        <textarea className="border rounded-md p-2" name="vraag" rows="5" placeholder="Waar kunnen we mee helpen?"></textarea>
+        <textarea
+  className="border rounded-md p-2"
+  name="vraag"
+  rows={5}
+  placeholder="Waar kunnen we mee helpen?"
+></textarea>
+
         <button className="btn btn-primary" type="submit">Verstuur</button>
       </form>
     </section>
