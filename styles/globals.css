@@ -1,0 +1,30 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --max: 1200px; }
+
+.container-max { max-width: var(--max); margin-inline: auto; padding-inline: 16px; }
+
+.btn { @apply inline-block rounded-md border px-4 py-2 text-sm font-medium; }
+.btn-primary { @apply bg-black text-white border-black; }
+.btn-ghost { @apply bg-white text-black border-black; }
+.kicker { @apply uppercase tracking-widest text-xs text-neutral-500; }
+.card { @apply border rounded-xl overflow-hidden bg-white flex flex-col; }
+.section { @apply py-10 md:py-12; }
+.grid-3 { @apply grid gap-4 md:grid-cols-3; }
+.note { @apply text-sm text-neutral-500; }
+
+/* Forceer alle neutrale teksten naar wit (voor zwarte achtergrond) */
+.text-neutral-500, .text-neutral-600 {
+  @apply text-white;
+}
+
+/* MAAR binnen een .card (die is wit), tekst weer zwart */
+.card {
+  @apply border rounded-xl overflow-hidden bg-white flex flex-col text-black;
+}
+.card p,
+.card h3 {
+  @apply text-black;
+}
