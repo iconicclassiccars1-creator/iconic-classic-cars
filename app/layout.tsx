@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div>
               <h4 className="font-semibold">Contact</h4>
-              <p>info@jouwdomein.nl<br />+31 10 123 4567</p>
+              <p>info@iconicclassiccars.nl<br />+31 6 51 77 99 31</p>
               <p>KVK / BTW op aanvraag</p>
             </div>
           </div>
