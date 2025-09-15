@@ -1,101 +1,154 @@
 ﻿"use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Page() {
-  const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
+  return (
+    <>
+      <section className="section py-12">
+        <div className="max-w-3xl mx-auto">
+          <div className="kicker">Contact</div>
+          <h1 className="text-3xl md:text-5xl font-semibold mt-1">
+            Plan roestcheck / stel je vraag
+          </h1>
+          <p className="text-neutral-600 mt-2">
+            Vul je gegevens in. We reageren meestal dezelfde werkdag.
+          </p>
+        </div>
+      </section>
+
+      <section className="section py-8">
+        <div className="max-w-3xl mx-auto">
+          <ContactForm />
+          <p className="text-xs text-neutral-500 mt-3">
+            Door te verzenden ga je akkoord met verwerking van je gegevens om contact met je op te nemen.
+          </p>
+          <p className="text-sm text-neutral-600 mt-6">
+            Liever mailen?{" "}
+            <a className="underline" href="mailto:info@iconicclassiccars.nl">info@iconicclassiccars.nl</a>
+            {" "}•{" "}
+            <Link className="underline" href="/">Terug naar home</Link>
+          </p>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ContactForm() {
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("idle");
-    const form = e.currentTarget;
-    const data = new FormData(form);
+    setError(null);
+    setLoading(true);
 
-    if (!data.get("naam") || !data.get("email") || !data.get("message")) {
-      setStatus("err");
-      return;
-    }
+    const data = new FormData(e.currentTarget);
+    const payload = {
+      name: String(data.get("name") || ""),
+      email: String(data.get("email") || ""),
+      phone: String(data.get("phone") || ""),
+      subject: String(data.get("subject") || ""),
+      message: String(data.get("message") || ""),
+    };
 
-    const res = await fetch("/api/contact", { method: "POST", body: data });
-    if (res.ok) {
-      setStatus("ok");
-      form.reset();
-    } else {
-      setStatus("err");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error(j?.error || "Versturen mislukt");
+      }
+
+      setSent(true);
+    } catch (err: any) {
+      setError(err?.message || "Er ging iets mis, probeer het later opnieuw.");
+    } finally {
+      setLoading(false);
     }
   }
 
+  if (sent) {
+    return (
+      <div className="rounded-xl border bg-green-50 text-green-900 p-6">
+        <p className="font-medium">Bedankt! Je bericht is verzonden.</p>
+        <p className="text-sm mt-1">We nemen spoedig contact met je op.</p>
+      </div>
+    );
+  }
+
   return (
-    <section className="section">
-      <h1 className="text-3xl font-semibold">Contact & Afspraak</h1>
-      <p className="mt-2 text-white">
-        Plan een afspraak of stel je vraag. We reageren binnen 1 werkdag.
-        <br />
-        Of mail direct:{" "}
-        <a href="mailto:info@iconicclassiccars.nl" className="underline">
-          info@iconicclassiccars.nl
-        </a>
-        .
-      </p>
-
-      <form onSubmit={onSubmit} className="grid gap-3 max-w-xl mt-4">
-        {/* eigen honeypot (optioneel) */}
-        <input type="text" name="website" tabIndex={-1} className="hidden" />
-
-        <label className="text-white">
-          Naam*
+    <form onSubmit={onSubmit} className="space-y-4">
+      <div className="grid md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium">Naam</label>
           <input
-            className="mt-1 w-full border rounded-md p-2 bg-white text-black"
-            type="text"
-            name="naam"
-            placeholder="Naam"
-            autoComplete="name"
+            name="name"
             required
+            className="mt-1 w-full rounded-lg border px-3 py-2"
+            placeholder="Voor- en achternaam"
           />
-        </label>
-
-        <label className="text-white">
-          E-mail*
+        </div>
+        <div>
+          <label className="block text-sm font-medium">E-mail</label>
           <input
-            className="mt-1 w-full border rounded-md p-2 bg-white text-black"
-            type="email"
             name="email"
-            placeholder="E-mail"
-            autoComplete="email"
+            type="email"
             required
+            className="mt-1 w-full rounded-lg border px-3 py-2"
+            placeholder="jij@voorbeeld.nl"
           />
-        </label>
+        </div>
+      </div>
 
-        <label className="text-white">
-          Model (optioneel)
-          <input
-            className="mt-1 w-full border rounded-md p-2 bg-white text-black"
-            type="text"
-            name="model"
-            placeholder="Bijv. Volvo Amazon 1967"
-            autoComplete="off"
-          />
-        </label>
+      <div>
+        <label className="block text-sm font-medium">Telefoon (optioneel)</label>
+        <input
+          name="phone"
+          className="mt-1 w-full rounded-lg border px-3 py-2"
+          placeholder="+31 6 12 34 56 78"
+        />
+      </div>
 
-        <label className="text-white">
-          Waar kunnen we mee helpen?*
-          <textarea
-            className="mt-1 w-full border rounded-md p-2 bg-white text-black"
-            name="message"
-            rows={5}
-            placeholder="Beschrijf je vraag of gewenste werkzaamheden"
-            required
-          />
-        </label>
+      <div>
+        <label className="block text-sm font-medium">Onderwerp</label>
+        <input
+          name="subject"
+          className="mt-1 w-full rounded-lg border px-3 py-2"
+          placeholder="Bijv. Roestcheck Volvo Amazon"
+        />
+      </div>
 
-        <button className="btn btn-primary" type="submit">Verstuur</button>
+      <div>
+        <label className="block text-sm font-medium">Bericht</label>
+        <textarea
+          name="message"
+          rows={6}
+          required
+          className="mt-1 w-full rounded-lg border px-3 py-2"
+          placeholder="Vertel kort wat je zoekt of wat er aan de auto moet gebeuren…"
+        />
+      </div>
 
-        {status === "ok" && (
-          <p className="text-green-500">Bedankt! We hebben je bericht ontvangen.</p>
-        )}
-        {status === "err" && (
-          <p className="text-red-500">Er ging iets mis. Controleer je invoer of probeer het later opnieuw.</p>
-        )}
-      </form>
-    </section>
+      {error && (
+        <div className="rounded-lg border border-red-300 bg-red-50 text-red-800 px-3 py-2 text-sm">
+          {error}
+        </div>
+      )}
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="btn btn-primary w-full md:w-auto"
+      >
+        {loading ? "Versturen…" : "Versturen"}
+      </button>
+    </form>
   );
 }
