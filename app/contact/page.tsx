@@ -1,135 +1,152 @@
 ﻿// app/contact/page.tsx
 "use client";
-
 import { useState } from "react";
+import Link from "next/link";
 
-export default function ContactPage() {
-  const [status, setStatus] = useState<string | null>(null);
+export default function Page() {
+  return (
+    <>
+      <section className="section py-12">
+        <div className="max-w-3xl mx-auto">
+          <div className="kicker">Contact</div>
+          <h1 className="text-3xl md:text-5xl font-semibold mt-1">
+            Plan roestcheck / stel je vraag
+          </h1>
+          <p className="text-neutral-600 mt-2">
+            Vul je gegevens in. We reageren meestal dezelfde werkdag.
+          </p>
+        </div>
+      </section>
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+      <section className="section py-8">
+        <div className="max-w-3xl mx-auto">
+          <ContactForm />
+          <p className="text-xs text-neutral-500 mt-3">
+            Door te verzenden ga je akkoord met verwerking van je gegevens om contact met je op te nemen.
+          </p>
+          <p className="text-sm text-neutral-600 mt-6">
+            Liever mailen?{" "}
+            <a className="underline" href="mailto:info@iconicclassiccars.nl">
+              info@iconicclassiccars.nl
+            </a>{" "}
+            • <Link className="underline" href="/">Terug naar home</Link>
+          </p>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ContactForm() {
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("loading");
+    setError(null);
+    setLoading(true);
 
-    const formData = new FormData(e.currentTarget);
-    const body = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
+    const data = new FormData(e.currentTarget);
+    const payload = {
+      name: String(data.get("name") || ""),
+      email: String(data.get("email") || ""),
+      phone: String(data.get("phone") || ""),
+      subject: String(data.get("subject") || ""),
+      message: String(data.get("message") || ""),
     };
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify(payload),
       });
-      const data = await res.json();
-      if (data.ok) {
-        setStatus("success");
-        e.currentTarget.reset();
-      } else {
-        setStatus("error");
+
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || !j?.ok) {
+        throw new Error(j?.error || `Versturen mislukt (status ${res.status})`);
       }
-    } catch (err) {
-      setStatus("error");
+      setSent(true);
+    } catch (err: any) {
+      setError(err?.message || "Er ging iets mis, probeer het later opnieuw.");
+    } finally {
+      setLoading(false);
     }
   }
 
+  if (sent) {
+    return (
+      <div className="rounded-xl border bg-green-50 text-green-900 p-6">
+        <p className="font-medium">Bedankt! Je bericht is verzonden.</p>
+        <p className="text-sm mt-1">We nemen spoedig contact met je op.</p>
+      </div>
+    );
+  }
+
   return (
-    <section className="max-w-2xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-semibold mb-6 text-black">Contact</h1>
-      <form onSubmit={handleSubmit} className="space-y-4 text-black">
+    /* container forceert zwarte tekst en donkere placeholders */
+    <form onSubmit={onSubmit} className="space-y-4 text-neutral-900 [&_*::placeholder]:text-neutral-700">
+      <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="block mb-1 font-medium">
-            Naam
-          </label>
+          <label className="block text-sm font-medium">Naam</label>
           <input
-            type="text"
-            id="name"
             name="name"
             required
-            placeholder="Jouw naam"
-            className="w-full border rounded-md px-3 py-2 text-black placeholder-black"
+            className="mt-1 w-full rounded-lg border px-3 py-2"
+            placeholder="Voor- en achternaam"
           />
         </div>
-
         <div>
-          <label htmlFor="email" className="block mb-1 font-medium">
-            E-mail
-          </label>
+          <label className="block text-sm font-medium">E-mail</label>
           <input
-            type="email"
-            id="email"
             name="email"
+            type="email"
             required
+            className="mt-1 w-full rounded-lg border px-3 py-2"
             placeholder="jij@voorbeeld.nl"
-            className="w-full border rounded-md px-3 py-2 text-black placeholder-black"
           />
         </div>
+      </div>
 
-        <div>
-          <label htmlFor="phone" className="block mb-1 font-medium">
-            Telefoon
-          </label>
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            placeholder="06-12345678"
-            className="w-full border rounded-md px-3 py-2 text-black placeholder-black"
-          />
+      <div>
+        <label className="block text-sm font-medium">Telefoon (optioneel)</label>
+        <input
+          name="phone"
+          className="mt-1 w-full rounded-lg border px-3 py-2"
+          placeholder="+31 6 12 34 56 78"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium">Onderwerp</label>
+        <input
+          name="subject"
+          className="mt-1 w-full rounded-lg border px-3 py-2"
+          placeholder="Bijv. Roestcheck Volvo Amazon"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium">Bericht</label>
+        <textarea
+          name="message"
+          rows={6}
+          required
+          className="mt-1 w-full rounded-lg border px-3 py-2"
+          placeholder="Vertel kort wat je zoekt of wat er aan de auto moet gebeuren…"
+        />
+      </div>
+
+      {error && (
+        <div className="rounded-lg border border-red-300 bg-red-50 text-red-800 px-3 py-2 text-sm">
+          {error}
         </div>
+      )}
 
-        <div>
-          <label htmlFor="subject" className="block mb-1 font-medium">
-            Onderwerp
-          </label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            placeholder="Waar gaat het over?"
-            className="w-full border rounded-md px-3 py-2 text-black placeholder-black"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="message" className="block mb-1 font-medium">
-            Bericht
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            required
-            placeholder="Schrijf je bericht hier..."
-            className="w-full border rounded-md px-3 py-2 text-black placeholder-black"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          className="bg-black text-white px-4 py-2 rounded-md hover:bg-neutral-800"
-        >
-          Versturen
-        </button>
-
-        {status === "loading" && (
-          <p className="text-neutral-600 mt-2">Versturen...</p>
-        )}
-        {status === "success" && (
-          <p className="text-green-600 mt-2">
-            Bedankt! Je bericht is verstuurd.
-          </p>
-        )}
-        {status === "error" && (
-          <p className="text-red-600 mt-2">
-            Er ging iets mis. Probeer het later opnieuw.
-          </p>
-        )}
-      </form>
-    </section>
+      <button type="submit" disabled={loading} className="btn btn-primary">
+        {loading ? "Versturen…" : "Versturen"}
+      </button>
+    </form>
   );
 }
