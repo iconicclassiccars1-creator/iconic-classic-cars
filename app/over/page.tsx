@@ -27,4 +27,41 @@ export default function OverPage() {
           <p>
             Onze voorliefde gaat uit naar de <strong>Volvo Amazon</strong>, een
             klassieker die voor ons de perfecte balans biedt tussen techniek,
-            design en duurzaamheid. Toch werken we met evenv
+            design en duurzaamheid. Toch werken we met evenveel enthousiasme aan
+            andere merken en modellen. Elke oldtimer heeft zijn eigen verhaal –
+            en wij vinden het een voorrecht om dat verhaal levend te houden.
+          </p>
+
+          <p>
+            We verzorgen zowel het technische als het cosmetische werk: van
+            motorrevisie en onderstel tot interieur, lak en afwerking. Bovendien
+            vinden we het geweldig om nét dat beetje extra toe te voegen. Door
+            slimme technische modificaties aan te brengen, kunnen we een
+            klassieker niet alleen restaureren, maar ook transformeren tot een
+            echte raceauto. Zo brengen we nostalgie en moderne prestaties samen
+            in één uniek geheel.
+          </p>
+
+          <p>
+            Netheid, precisie en vakmanschap staan bij ons centraal – zowel in
+            ons werk als in onze werkplaats. Een opgeruimde garage werkt niet
+            alleen prettiger, maar draagt ook bij aan een beter resultaat én een
+            beter milieu.
+          </p>
+
+          <p>
+            Het mooiste moment? Dat is wanneer een zorgvuldig gerestaureerde of
+            aangepaste oldtimer onze garage uitrijdt – glanzend, krachtig en
+            klaar voor vele nieuwe kilometers.
+          </p>
+        </div>
+
+        <div className="mt-8">
+          <Link href="/contact" className="btn btn-primary">
+            Plan een kennismaking
+          </Link>
+        </div>
+      </div>
+    </main>
+  );
+}
