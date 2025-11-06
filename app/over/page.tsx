@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function OverPage() {
   return (
-    <main className="section py-12 bg-neutral-900 text-white">
-      <div className="max-w-3xl mx-auto">
+    <main className="bg-black text-white min-h-screen py-12">
+      <div className="max-w-3xl mx-auto px-4">
         <div className="kicker text-white">Over ons</div>
 
         <div className="mt-4 space-y-4 leading-relaxed">
