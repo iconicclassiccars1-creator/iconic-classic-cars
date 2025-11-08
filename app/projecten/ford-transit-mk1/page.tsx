@@ -5,18 +5,22 @@ import Link from "next/link";
 
 const images = [
   {
-    src: "/projecten/ford-transit-mk1/voorzijde.jpg",
-    alt: "Ford Transit MK1 - voorzijde",
+    src: "/projecten/ford-transit-mk1/1.jpg",
+    alt: "Ford Transit MK1 - aankoop",
   },
   {
-    src: "/projecten/ford-transit-mk1/zijkant.jpg",
-    alt: "Ford Transit MK1 - zijkant",
+    src: "/projecten/ford-transit-mk1/2.jpg",
+    alt: "Ford Transit MK1 - transport",
   },
   {
-    src: "/projecten/ford-transit-mk1/interieur.jpg",
-    alt: "Ford Transit MK1 - interieur",
+    src: "/projecten/ford-transit-mk1/3.jpg",
+    alt: "Ford Transit MK1 - motorruimte",
   },
-  // voeg hier gerust meer foto's toe
+  {
+    src: "/projecten/ford-transit-mk1/4.jpg",
+    alt: "Ford Transit MK1 - motor demontage",
+  },  
+// voeg hier gerust meer foto's toe
 ];
 
 type ImageItem = {
@@ -36,7 +40,7 @@ export default function FordTransitMk1Page() {
         </h1>
 
         <p className="mt-4 text-white/90">
-          Een uniek project rondom een klassieke Ford Transit MK1. In dit project hadden we de uitdagingen met een gebroken nokas. Gezien de V4 (keulen) motor geheel gedemonteerd moest worden, hebben we tevens het gehele blok maar gereviseerd. Dus ja, alles nieuw.
+          Een uniek project rondom een klassieke Ford Transit MK1. In dit project hadden we de uitdaging met een gebroken nokas. Gezien de V4 (keulen) motor geheel gedemonteerd moest worden, hebben we tevens het gehele blok maar gereviseerd. Dus ja, alles nieuw.
         </p>
 
         {/* Korte specs of highlights */}
