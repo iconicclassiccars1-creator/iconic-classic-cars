@@ -3,16 +3,20 @@
 export default function Page() {
   const diensten = [
     {title:'Amazon roestherstel & plaatwerk', img:'/img/ph1.svg', desc:'Vaste prijs roestcheck met lasplan en fotorapportage. Dorpels, wielranden, vloeren.'},
-    {title:'Onderhoud Volvo 200 & 900',       img:'/img/ph2.svg', desc:'Kleine/grote beurt, remmen, distributie. OEM-onderdelen, duidelijke offertes.'},
+    {title:'Onderhoud Volvo 100, 200 & 900',  img:'/img/ph2.svg', desc:'Kleine/grote beurt, remmen, distributie. OEM-onderdelen, duidelijke offertes.'},
     {title:'Airco & Elektronica',             img:'/img/ph3.svg', desc:'Diagnose en reparatie (o.a. 940). Lektest, vullen, bedrading fixes.'},
     {title:'Redblock service & tuning',       img:'/img/ph4.svg', desc:'B18/B20/B21/B23/B230: kleppen, carburateurs (SU/Stromberg), 123Ignition.'},
     {title:'Onderdelen & revisie',            img:'/img/ph5.svg', desc:'Revisie-onderdelen (omruil), voorraad remdelen, rubbers, pakkingen.'},
     {title:'Workshops & stalling',            img:'/img/ph6.svg', desc:'Sleuteldagen & winterstalling. Beperkte plekken.'}
+
   ];
   const projecten = [
     {title:'Volvo Amazon – dorpels & vloer', img:'/img/ph1.svg', desc:'Deelrestauratie met OEM-plaatwerk, fotolog & rapport. Doorlooptijd: 6 weken.'},
     {title:'Volvo 940 – airco & remmen',     img:'/img/ph2.svg', desc:'Compleet onderhoud + airco-reparatie, testrit & opleverchecklist.'},
     {title:'Redblock – carb & ontsteking',   img:'/img/ph3.svg', desc:'SU-revisie, ontstekingscurve optimalisatie en afsteltijd op de bank/weg.'}
+    {title:'Ford Transit MK1 – project,      img:'/projecten/ford-transit-mk1/voorzijde.jpg', desc: 'Volledige restauratie & technische update van een Ford Transit MK1.', href: '/projecten/ford-transit-mk1',
+},
+
   ];
   return (
     <>
@@ -63,14 +67,30 @@ export default function Page() {
         <h2 className='text-2xl font-semibold mb-4'>Projecten & Cases</h2>
         <div className='grid-3'>
           {projecten.map((c) => (
-            <article className='card' key={c.title}>
-              <img src={c.img} alt={c.title} />
-              <div className='p-4'>
-                <h3 className='font-semibold'>{c.title}</h3>
-                <p className='text-neutral-600'>{c.desc}</p>
-              </div>
-            </article>
-          ))}
+  <article className="card" key={c.title}>
+    {c.href ? (
+      <a href={c.href}>
+        <img src={c.img} alt={c.title} />
+        <div className="p-4">
+          <h3 className="font-semibold">{c.title}</h3>
+          <p className="text-neutral-600">{c.desc}</p>
+          <span className="inline-block mt-2 text-blue-600 hover:underline">
+            Bekijk project
+          </span>
+        </div>
+      </a>
+    ) : (
+      <>
+        <img src={c.img} alt={c.title} />
+        <div className="p-4">
+          <h3 className="font-semibold">{c.title}</h3>
+          <p className="text-neutral-600">{c.desc}</p>
+        </div>
+      </>
+    )}
+  </article>
+))}
+
         </div>
       </section>
     </>
