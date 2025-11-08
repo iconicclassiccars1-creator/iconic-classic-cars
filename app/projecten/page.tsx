@@ -17,8 +17,8 @@ export default function ProjectenPage() {
               Ford Transit MK1 – restauratie
             </h2>
             <p className="mt-2 text-sm text-gray-300">
-              Volledige restauratie van een klassieke Ford Transit MK1: plaatwerk,
-              techniek en interieur volledig aangepakt.
+              Volledig gereviseerde v4 motor van een klassieke Ford Transit MK1: technisch de Transit volledig in orde gemaakt,
+              elektra onder handen genomen en wat cosmetische zaken aangepakt.
             </p>
             <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gray-400">
               Bekijk project
