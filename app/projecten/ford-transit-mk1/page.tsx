@@ -1,23 +1,42 @@
-﻿const projecten = [
-  {
-    title: 'Volvo Amazon – dorpels & vloer',
-    img: '/img/ph1.svg',
-    desc: 'Deelrestauratie met OEM-plaatwerk, fotolog & rapport. Doorlooptijd: 6 weken.',
-  },
-  {
-    title: 'Volvo 940 – airco & remmen',
-    img: '/img/ph2.svg',
-    desc: 'Compleet onderhoud + airco-reparatie, testrit & opleverchecklist.',
-  },
-  {
-    title: 'Redblock – carb & ontsteking',
-    img: '/img/ph3.svg',
-    desc: 'SU-revisie, ontstekingscurve optimalisatie en afsteltijd op de bank/weg.',
-  },
-  {
-    title: 'Ford Transit MK1 – project',
-    img: '/img/ph4.svg', // vervang dit door je eigen foto
-    desc: 'Volledige restauratie & technische update van een Ford Transit MK1. Carrosserie, onderstel en aandrijflijn in ere hersteld.',
-    href: '/projecten/ford-transit-mk1',
-  },
-];
+﻿// app/projecten/ford-transit-mk1/page.tsx
+import Link from "next/link";
+
+export default function FordTransitMk1Page() {
+  return (
+    <main className="section py-12">
+      <div className="max-w-3xl mx-auto">
+        <div className="kicker">Project</div>
+        <h1 className="text-3xl md:text-5xl font-semibold mt-1">
+          Ford Transit MK1
+        </h1>
+
+        <p className="text-neutral-600 mt-4">
+          Een uniek project rondom een klassieke Ford Transit MK1. In dit project
+          combineren we behoud van originele details met slimme technische
+          verbeteringen voor betrouwbaarheid en rijplezier.
+        </p>
+
+        <div className="mt-6 space-y-3 text-neutral-700">
+          <p>
+            <strong>Werkzaamheden (voorbeeld):</strong>
+          </p>
+          <ul className="list-disc list-inside space-y-1">
+            <li>Carrosserieherstel en roestbehandeling</li>
+            <li>Onderstel en remmen volledig nagelopen</li>
+            <li>Motor en aandrijflijn technisch opgewaardeerd</li>
+            <li>Stuur- en veringscomponenten vernieuwd</li>
+            <li>Cosmetische afwerking interieur en exterieur</li>
+          </ul>
+        </div>
+
+        <p className="text-neutral-600 mt-6">
+          Benieuwd wat we voor jouw klassieker kunnen betekenen? Neem gerust{" "}
+          <Link href="/contact" className="underline">
+            contact
+          </Link>{" "}
+          met ons op.
+        </p>
+      </div>
+    </main>
+  );
+}
