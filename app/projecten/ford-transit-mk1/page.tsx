@@ -7,14 +7,13 @@ const images = [
     alt: "Ford Transit MK1 - voorzijde",
   },
   {
-    src: "/projecten/ford-transit-mk1/onderstel.jpg",
-    alt: "Ford Transit MK1 - onderstel",
+    src: "/projecten/ford-transit-mk1/zijkant.jpg",
+    alt: "Ford Transit MK1 - zijkant",
   },
   {
     src: "/projecten/ford-transit-mk1/interieur.jpg",
     alt: "Ford Transit MK1 - interieur",
   },
-  // voeg hier gerust meer foto's toe
 ];
 
 export default function FordTransitMk1Page() {
@@ -32,28 +31,15 @@ export default function FordTransitMk1Page() {
           verbeteringen voor betrouwbaarheid en rijplezier.
         </p>
 
-        {/* Korte specs of highlights */}
-        <div className="mt-6 grid md:grid-cols-3 gap-4 text-sm">
-          <div className="border rounded-lg p-3">
-            <p className="font-semibold">Bouwjaar</p>
-            <p className="text-neutral-600">Bijv. 1973</p>
-          </div>
-          <div className="border rounded-lg p-3">
-            <p className="font-semibold">Werkzaamheden</p>
-            <p className="text-neutral-600">Carrosserie, onderstel, techniek</p>
-          </div>
-          <div className="border rounded-lg p-3">
-            <p className="font-semibold">Status</p>
-            <p className="text-neutral-600">Afgerond / in uitvoering</p>
-          </div>
-        </div>
-
         {/* Fotogalerij */}
         <section className="mt-8">
           <h2 className="text-2xl font-semibold mb-3">Foto&apos;s</h2>
           <div className="grid md:grid-cols-3 gap-4">
             {images.map((img) => (
-              <figure key={img.src} className="overflow-hidden rounded-lg border bg-black/5">
+              <figure
+                key={img.src}
+                className="overflow-hidden rounded-lg border bg-black/5"
+              >
                 <img
                   src={img.src}
                   alt={img.alt}
