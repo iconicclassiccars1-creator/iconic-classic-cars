@@ -36,24 +36,22 @@ export default function FordTransitMk1Page() {
         </h1>
 
         <p className="mt-4 text-white/90">
-          Een uniek project rondom een klassieke Ford Transit MK1. In dit project
-          combineren we behoud van originele details met slimme technische
-          verbeteringen voor betrouwbaarheid en rijplezier.
+          Een uniek project rondom een klassieke Ford Transit MK1. In dit project hadden we de uitdagingen met een gebroken nokas. Gezien de V4 (keulen) motor geheel gedemonteerd moest worden, hebben we tevens het gehele blok maar gereviseerd. Dus ja, alles nieuw.
         </p>
 
         {/* Korte specs of highlights */}
         <div className="mt-6 grid md:grid-cols-3 gap-4 text-sm">
           <div className="border border-white/20 rounded-lg p-3">
             <p className="font-semibold text-white">Bouwjaar</p>
-            <p className="text-white/80">Bijv. 1973</p>
+            <p className="text-white/80">1974</p>
           </div>
           <div className="border border-white/20 rounded-lg p-3">
             <p className="font-semibold text-white">Werkzaamheden</p>
-            <p className="text-white/80">Carrosserie, onderstel, techniek</p>
+            <p className="text-white/80">Nokas, gehele motor revisie, Lakwerk</p>
           </div>
           <div className="border border-white/20 rounded-lg p-3">
             <p className="font-semibold text-white">Status</p>
-            <p className="text-white/80">Afgerond / in uitvoering</p>
+            <p className="text-white/80">Afgerond / klaar voor de verkoop</p>
           </div>
         </div>
 
@@ -80,20 +78,23 @@ export default function FordTransitMk1Page() {
         {/* Beschrijving / verhaal */}
         <section className="mt-8 space-y-4 text-white/90 leading-relaxed">
           <p>
-            Bij deze Transit hebben we uitgebreid roestherstel uitgevoerd, met
-            aandacht voor originele lijnen en details. De bekende gevoelige
-            plekken bij dorpels, wielkasten en chassis zijn grondig aangepakt.
+            Bij deze Transit hebben we ons volledig uitgeleefd op een motorische revisie met liefde voor detail. De motor kreeg een frisse start: alles is zorgvuldig nagekeken, herzien en waar nodig vernieuwd, zodat hij weer soepel loopt als in zijn jongere jaren.
           </p>
           <p>
-            Technisch is de auto naar een hoger niveau gebracht, met aandacht
-            voor remmen, vering en betrouwbaarheid. Daarbij hebben we waar
-            mogelijk originele techniek behouden en alleen gemoderniseerd waar
-            het echt waarde toevoegt.
+            Ook cosmetisch hebben we de bus de aandacht gegeven die hij verdient. Kleine imperfecties zijn aangepakt, zonder het karakter te verliezen — want een beetje patina hoort bij zijn verhaal. De elektronica is grondig gecontroleerd en hersteld, zodat alles weer werkt zoals het hoort, en zelfs de verlichting brandt weer trots als toen hij de fabriek uitreed.
           </p>
           <p>
-            Het resultaat is een Transit die weer veilig en met vertrouwen de weg
-            op kan, zonder zijn karakter als werkpaard en klassieker te verliezen.
+            Het onderstel van deze Ford is volledig hard en in uitstekende staat, wat de basis vormt voor nog vele betrouwbare kilometers. Natuurlijk zijn er gebruikssporen aanwezig — sporen van een leven vol werk en avontuur — maar juist die geven hem zijn charme en authenticiteit.
           </p>
+          <p>
+We hebben bewust gekozen om de nostalgie te bewaren: geen overdaad aan moderne snufjes, maar een eerbetoon aan wat deze Transit zo bijzonder maakt.
+          </p>
+          <p>
+Daarbij is er een volledig taxatierapport aanwezig, dat we graag delen met de volgende trotse eigenaar.
+          </p>
+          <p>
+Het eindresultaat? Een klassieke Ford die weer betrouwbaar, levendig en vol karakter de weg op kan — klaar voor nieuwe avonturen, met het hart van vroeger en de zekerheid van nu.
+</p>
         </section>
 
         <div className="mt-10 flex gap-3">
