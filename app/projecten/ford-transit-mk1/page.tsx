@@ -20,6 +20,82 @@ const images = [
     src: "/projecten/ford-transit-mk1/4.jpg",
     alt: "Ford Transit MK1 - motor demontage",
   },  
+  {
+    src: "/projecten/ford-transit-mk1/5.jpg",
+    alt: "Ford Transit MK1 - aankoop",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/6.jpg",
+    alt: "Ford Transit MK1 - transport",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/7.jpg",
+    alt: "Ford Transit MK1 - motorruimte",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/8.jpg",
+    alt: "Ford Transit MK1 - motor demontage",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/9.jpg",
+    alt: "Ford Transit MK1 - aankoop",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/10.jpg",
+    alt: "Ford Transit MK1 - transport",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/11.jpg",
+    alt: "Ford Transit MK1 - motorruimte",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/12.jpg",
+    alt: "Ford Transit MK1 - motor demontage",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/13.jpg",
+    alt: "Ford Transit MK1 - aankoop",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/14.jpg",
+    alt: "Ford Transit MK1 - transport",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/15.jpg",
+    alt: "Ford Transit MK1 - motorruimte",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/16.jpg",
+    alt: "Ford Transit MK1 - motor demontage",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/17.jpg",
+    alt: "Ford Transit MK1 - aankoop",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/18.jpg",
+    alt: "Ford Transit MK1 - transport",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/19.jpg",
+    alt: "Ford Transit MK1 - motorruimte",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/20.jpg",
+    alt: "Ford Transit MK1 - motor demontage",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/21.jpg",
+    alt: "Ford Transit MK1 - aankoop",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/22.jpg",
+    alt: "Ford Transit MK1 - transport",
+  },
+  {
+    src: "/projecten/ford-transit-mk1/23.jpg",
+    alt: "Ford Transit MK1 - motorruimte",
+  },
 // voeg hier gerust meer foto's toe
 ];
 
